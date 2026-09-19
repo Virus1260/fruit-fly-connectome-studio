@@ -43,11 +43,12 @@ export default function EmbodiedFlySandbox() {
   const [stepFrequency, setStepFrequency] = useState<number>(10.4); // Hz tripod gait
   const [adhesionEnabled, setAdhesionEnabled] = useState<boolean>(true);
   const [activeTripod, setActiveTripod] = useState<"tripod_A" | "tripod_B">("tripod_A");
+  const lastTripodUpdateRef = useRef<number>(0);
   const [escapeTriggered, setEscapeTriggered] = useState<boolean>(false);
 
-  // Position in virtual arena
-  const [flyPos, setFlyPos] = useState<{ x: number; y: number }>({ x: 250, y: 190 });
-  const [heading, setHeading] = useState<number>(0.2); // radians
+  // Position & heading in virtual arena (stored in refs to eliminate 60fps React render cascades)
+  const flyPosRef = useRef<{ x: number; y: number }>({ x: 250, y: 190 });
+  const headingRef = useRef<number>(0.2); // radians
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationFrameRef = useRef<number | null>(null);
@@ -76,10 +77,12 @@ export default function EmbodiedFlySandbox() {
     setWingBeatFreq(245);
 
     // Ballistic leap
-    setFlyPos((p) => ({
-      x: Math.max(50, Math.min(550, p.x + Math.cos(heading + Math.PI) * 75)),
-      y: Math.max(50, Math.min(330, p.y + Math.sin(heading + Math.PI) * 75)),
-    }));
+    const cur = flyPosRef.current;
+    const h = headingRef.current;
+    flyPosRef.current = {
+      x: Math.max(50, Math.min(550, cur.x + Math.cos(h + Math.PI) * 75)),
+      y: Math.max(50, Math.min(330, cur.y + Math.sin(h + Math.PI) * 75)),
+    };
 
     setTimeout(() => {
       setEscapeTriggered(false);
@@ -128,45 +131,49 @@ export default function EmbodiedFlySandbox() {
         if (locomotionMode === "walk") {
           // Tripod gait alternating
           const phase = Math.sin(time * stepFrequency);
-          setActiveTripod(phase > 0 ? "tripod_A" : "tripod_B");
+          const currentTripod = phase > 0 ? "tripod_A" : "tripod_B";
+          const now = performance.now();
+          if (now - lastTripodUpdateRef.current > 150) {
+            lastTripodUpdateRef.current = now;
+            setActiveTripod(currentTripod);
+          }
 
           // Move along heading with gentle wandering
-          setFlyPos((p) => {
-            const nx = p.x + Math.cos(heading) * 1.2;
-            const ny = p.y + Math.sin(heading) * 1.2;
-            let nh = heading + (Math.random() - 0.5) * 0.05;
+          const cur = flyPosRef.current;
+          let curH = headingRef.current;
+          const nx = cur.x + Math.cos(curH) * 1.2;
+          const ny = cur.y + Math.sin(curH) * 1.2;
+          let nh = curH + (Math.random() - 0.5) * 0.05;
 
-            // Bounce off boundaries
-            if (nx < 40 || nx > w - 40) nh = Math.PI - nh;
-            if (ny < 40 || ny > h - 40) nh = -nh;
-            setHeading(nh);
-
-            return {
-              x: Math.max(30, Math.min(w - 30, nx)),
-              y: Math.max(30, Math.min(h - 30, ny)),
-            };
-          });
+          // Bounce off boundaries
+          if (nx < 40 || nx > w - 40) nh = Math.PI - nh;
+          if (ny < 40 || ny > h - 40) nh = -nh;
+          headingRef.current = nh;
+          flyPosRef.current = {
+            x: Math.max(30, Math.min(w - 30, nx)),
+            y: Math.max(30, Math.min(h - 30, ny)),
+          };
         } else if (locomotionMode === "flight") {
           // High speed free flight
-          setFlyPos((p) => {
-            const nx = p.x + Math.cos(heading) * 3.5;
-            const ny = p.y + Math.sin(heading) * 3.5;
-            let nh = heading + Math.sin(time * 2) * 0.08;
-            if (nx < 40 || nx > w - 40) nh = Math.PI - nh;
-            if (ny < 40 || ny > h - 40) nh = -nh;
-            setHeading(nh);
-            return {
-              x: Math.max(30, Math.min(w - 30, nx)),
-              y: Math.max(30, Math.min(h - 30, ny)),
-            };
-          });
+          const cur = flyPosRef.current;
+          let curH = headingRef.current;
+          const nx = cur.x + Math.cos(curH) * 3.5;
+          const ny = cur.y + Math.sin(curH) * 3.5;
+          let nh = curH + Math.sin(time * 2) * 0.08;
+          if (nx < 40 || nx > w - 40) nh = Math.PI - nh;
+          if (ny < 40 || ny > h - 40) nh = -nh;
+          headingRef.current = nh;
+          flyPosRef.current = {
+            x: Math.max(30, Math.min(w - 30, nx)),
+            y: Math.max(30, Math.min(h - 30, ny)),
+          };
         }
       }
 
       // Draw FlyBody 3D Anatomical Projection
       ctx.save();
-      ctx.translate(flyPos.x, flyPos.y);
-      ctx.rotate(heading);
+      ctx.translate(flyPosRef.current.x, flyPosRef.current.y);
+      ctx.rotate(headingRef.current);
 
       const flyScale = 1.3;
       ctx.scale(flyScale, flyScale);
@@ -345,7 +352,7 @@ export default function EmbodiedFlySandbox() {
         ctx.strokeStyle = "rgba(239, 68, 68, 0.8)";
         ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.arc(flyPos.x, flyPos.y, 48, 0, Math.PI * 2);
+        ctx.arc(flyPosRef.current.x, flyPosRef.current.y, 48, 0, Math.PI * 2);
         ctx.stroke();
       }
 
@@ -356,7 +363,7 @@ export default function EmbodiedFlySandbox() {
     return () => {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [flyPos, heading, isSimulating, locomotionMode, stepFrequency, adhesionEnabled, escapeTriggered]);
+  }, [isSimulating, locomotionMode, stepFrequency, adhesionEnabled, escapeTriggered]);
 
   return (
     <div className="space-y-8">
