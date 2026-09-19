@@ -31,6 +31,7 @@
 - Keep assets organized. Do not bundle video files larger than 5MB directly inside `public/`.
 
 ## 4. Git and Deployment Hygiene
-- Commit all documentation, Manim scripts, and research data to Git for GitHub retention.
+- STRICT CONSTRAINT: NEVER execute `git push` without explicit user permission. Only staging (`git add`) and local commits (`git commit`) are permitted autonomously.
+- Commit all documentation, scripts, and research data to Git for local version control.
 - Ensure `.vercelignore` excludes non-runtime assets (`reference_data/`, `manim/`, `graphify/`, `*.py`) to keep Vercel deployments fast and lean.
-- Verify that `npm run build` succeeds locally before pushing changes.
+- Verify that `npm run build` succeeds locally before requesting push approval.

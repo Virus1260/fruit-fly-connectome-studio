@@ -27,3 +27,6 @@
   - $\tau_m = R_m \cdot C_m \approx 20\text{ms}$
   - Refractory period: $2.0\text{ms}$
 - Giant Fiber Reflex: Monosynaptic visual escape circuit with latency under 5ms, bypassing slow central processing for immediate escape jumps.
+
+## 4. User Workflow Directives
+- **Git Push Constraint (2026-09-20)**: NEVER execute `git push` without explicit user permission. The agent may only perform local staging (`git add`) and local commits (`git commit`). Any remote push to GitHub must be explicitly approved by the user.
