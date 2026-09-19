@@ -40,3 +40,7 @@ memory.md
 MEMORY.md
 AGENTS.md
 CLAUDE.md
+
+# TuragaLab flybody local MuJoCo repository
+flybody/
+scripts/

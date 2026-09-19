@@ -28,5 +28,17 @@
   - Refractory period: $2.0\text{ms}$
 - Giant Fiber Reflex: Monosynaptic visual escape circuit with latency under 5ms, bypassing slow central processing for immediate escape jumps.
 
-## 4. User Workflow Directives
+## 4. Biomechanical Body Integration (TuragaLab / Google DeepMind FlyBody)
+- Repository: `TuragaLab/flybody` (Nature / bioRxiv).
+- Local Assets: `flybody/flybody/fruitfly/assets/fruitfly.xml`.
+- MuJoCo Specifications:
+  - 159 Geometries (`ngeom`)
+  - 103 Joints (`njnt`)
+  - 108 Degrees of Freedom (`nv`)
+  - 78 Actuators (`nu`) across head, antennae, wings, and 6 legs (T1, T2, T3)
+  - Timestep: 0.10 ms (10 kHz)
+- 100% Local Execution: Offline Python runner at `scripts/run_flybody_simulation.py` and client-side 78-DOF forward kinematics sandbox in `src/components/EmbodiedFlySandbox.tsx`. No dependency on external `flywire.ai` cloud servers.
+
+## 5. User Workflow Directives
 - **Git Push Constraint (2026-09-20)**: NEVER execute `git push` without explicit user permission. The agent may only perform local staging (`git add`) and local commits (`git commit`). Any remote push to GitHub must be explicitly approved by the user.
+
