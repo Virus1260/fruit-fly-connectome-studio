@@ -14,7 +14,9 @@ import {
   Maximize2,
   Play,
   RotateCcw,
-  Network
+  Network,
+  Database,
+  ExternalLink,
 } from "lucide-react";
 
 export default function ConnectomeExplorer() {
@@ -368,6 +370,195 @@ export default function ConnectomeExplorer() {
               <Zap className="h-4 w-4" />
               Inject Neural Signal Into {selectedRegion.shortName}
             </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Google Dataset Architecture & Neuron-by-Neuron 3D Streaming */}
+      <div className="mt-12 space-y-6">
+        <div className="rounded-3xl border border-cyan-500/20 bg-zinc-900/70 p-8 backdrop-blur-md">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-mono font-medium text-cyan-400 mb-2">
+                <Database className="h-3.5 w-3.5" />
+                Google Research & Janelia Data Architecture
+              </div>
+              <h3 className="text-2xl font-bold text-white">
+                How Big is the Dataset? Can You Copy It Locally?
+              </h3>
+              <p className="text-xs text-zinc-400 mt-1 max-w-2xl">
+                The entire electron microscopy imagery is over <span className="text-cyan-300 font-bold">100 Terabytes</span>. 
+                Instead of downloading 100 TB to your home drive, Google and FlyWire use <strong>Neuroglancer</strong> to stream individual 3D neuron meshes (1-5 MB each) directly into your browser on-demand via WebGL/WebGPU.
+              </p>
+            </div>
+
+            <a
+              href="https://codex.flywire.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-2xl bg-cyan-500 px-5 py-2.5 text-xs font-bold text-black hover:bg-cyan-400 active:scale-95 transition-all shadow-lg shadow-cyan-500/20 flex-shrink-0"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Open Live FlyWire Codex 3D
+            </a>
+          </div>
+
+          {/* Dataset Layer Sizing Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div className="rounded-2xl border border-zinc-800 bg-black/50 p-4">
+              <div className="text-[11px] font-mono text-zinc-400 uppercase">1. Raw EM Slices</div>
+              <div className="text-2xl font-black text-white font-mono mt-1">~100 TB</div>
+              <div className="text-[11px] text-zinc-500 mt-1">
+                40nm ultra-thin sections, millions of 2D electron microscope images.
+              </div>
+              <div className="mt-2 text-[10px] font-mono text-amber-400">Cloud-Only (Google Cloud Storage)</div>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-800 bg-black/50 p-4">
+              <div className="text-[11px] font-mono text-zinc-400 uppercase">2. FFN 3D Voxels</div>
+              <div className="text-2xl font-black text-cyan-400 font-mono mt-1">~30 - 50 TB</div>
+              <div className="text-[11px] text-zinc-500 mt-1">
+                Flood-Filling Networks segmentation boundaries & volumetric masks.
+              </div>
+              <div className="mt-2 text-[10px] font-mono text-cyan-400">Streamed via Neuroglancer</div>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-800 bg-black/50 p-4">
+              <div className="text-[11px] font-mono text-zinc-400 uppercase">3. 3D Polygon Meshes</div>
+              <div className="text-2xl font-black text-emerald-400 font-mono mt-1">~50 - 100 GB</div>
+              <div className="text-[11px] text-zinc-500 mt-1">
+                Compressed Draco/precomputed multi-resolution meshes for 166.7k neurons.
+              </div>
+              <div className="mt-2 text-[10px] font-mono text-emerald-400">Streamed per-neuron (1-5 MB)</div>
+            </div>
+
+            <div className="rounded-2xl border border-zinc-800 bg-black/50 p-4">
+              <div className="text-[11px] font-mono text-zinc-400 uppercase">4. Connectome Graph</div>
+              <div className="text-2xl font-black text-purple-400 font-mono mt-1">~3.8 GB</div>
+              <div className="text-[11px] text-zinc-500 mt-1">
+                125M synaptic edges & 166k nodes in Feather/Parquet format.
+              </div>
+              <div className="mt-2 text-[10px] font-mono text-purple-400">Can be downloaded locally!</div>
+            </div>
+          </div>
+
+          {/* Neuron-by-Neuron Interactive Inspector */}
+          <div className="border-t border-zinc-800 pt-6">
+            <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-cyan-400" />
+              Neuron-by-Neuron Live 3D Inspector
+            </h4>
+            <p className="text-xs text-zinc-400 mb-6">
+              Select any famous neuron from the FlyWire/Google connectome to inspect its morphology, synaptic edge counts, and stream its 3D reconstruction:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                {
+                  name: "Giant Fiber Neuron (GF-R)",
+                  id: "720575940619379654",
+                  role: "Ultrafast Escape Reflex",
+                  neuropil: "Central Brain to VNC",
+                  synapses: "2,420 synapses",
+                  trans: "Acetylcholine / Electrical",
+                  color: "#ef4444",
+                  nglUrl: "https://ngl.flywire.ai/?json_url=https://global.codex.flywire.ai/api/datastack/flywire_fafb_production/views/720575940619379654",
+                },
+                {
+                  name: "Kenyon Cell (KCg-m)",
+                  id: "720575940624021200",
+                  role: "Associative Odor Memory",
+                  neuropil: "Mushroom Body",
+                  synapses: "1,140 synapses",
+                  trans: "Acetylcholine (Sparse)",
+                  color: "#ec4899",
+                  nglUrl: "https://codex.flywire.ai/app/cell_details?root_id=720575940624021200",
+                },
+                {
+                  name: "PAM11 Dopamine Neuron",
+                  id: "720575940614131000",
+                  role: "Sugar Reward / StonkFly Profit",
+                  neuropil: "Protocerebrum to MB",
+                  synapses: "3,890 synapses",
+                  trans: "Dopamine (Appetitive)",
+                  color: "#f59e0b",
+                  nglUrl: "https://codex.flywire.ai/app/cell_details?root_id=720575940614131000",
+                },
+                {
+                  name: "PPL101 Aversive Dopamine",
+                  id: "720575940608920100",
+                  role: "Electric Shock / StonkFly Penalty",
+                  neuropil: "Mushroom Body Lobes",
+                  synapses: "2,910 synapses",
+                  trans: "Dopamine (Aversive)",
+                  color: "#f97316",
+                  nglUrl: "https://codex.flywire.ai/app/cell_details?root_id=720575940608920100",
+                },
+                {
+                  name: "T4a Motion Direction Cell",
+                  id: "720575940621458900",
+                  role: "Optical Flow & Retinal Motion",
+                  neuropil: "Medulla to Lobula Plate",
+                  synapses: "870 synapses",
+                  trans: "Acetylcholine / GABA",
+                  color: "#06b6d4",
+                  nglUrl: "https://codex.flywire.ai/app/cell_details?root_id=720575940621458900",
+                },
+                {
+                  name: "P1 Courtship Command Neuron",
+                  id: "720575940632819200",
+                  role: "Male Dimorphism & Song Generation",
+                  neuropil: "Lateral Protocerebrum",
+                  synapses: "4,620 synapses",
+                  trans: "Cholinergic / Peptidergic",
+                  color: "#a855f7",
+                  nglUrl: "https://codex.flywire.ai/app/cell_details?root_id=720575940632819200",
+                },
+              ].map((neuron) => (
+                <div
+                  key={neuron.id}
+                  className="rounded-2xl border border-zinc-800 bg-black/60 p-4 flex flex-col justify-between hover:border-cyan-500/40 transition-all group"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span
+                        className="rounded-full px-2 py-0.5 text-[10px] font-mono font-bold"
+                        style={{ backgroundColor: neuron.color + "25", color: neuron.color, border: `1px solid ${neuron.color}60` }}
+                      >
+                        {neuron.neuropil}
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-500">ID: ...{neuron.id.slice(-6)}</span>
+                    </div>
+
+                    <h5 className="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                      {neuron.name}
+                    </h5>
+                    <p className="text-xs text-zinc-400 mt-1">{neuron.role}</p>
+
+                    <div className="mt-3 space-y-1 text-[11px] font-mono text-zinc-400 border-t border-zinc-800/80 pt-2">
+                      <div className="flex justify-between">
+                        <span>Synaptic Edges:</span>
+                        <span className="text-zinc-200">{neuron.synapses}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Transmitter:</span>
+                        <span className="text-emerald-400">{neuron.trans}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <a
+                    href={neuron.nglUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 flex items-center justify-center gap-1.5 rounded-xl border border-cyan-500/30 bg-cyan-500/10 py-2 text-xs font-semibold text-cyan-300 hover:bg-cyan-500/20 active:scale-95 transition-all"
+                  >
+                    <span>Inspect 3D in Neuroglancer</span>
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
