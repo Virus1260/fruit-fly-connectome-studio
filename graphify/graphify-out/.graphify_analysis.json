@@ -1,0 +1,244 @@
+{
+  "communities": {
+    "0": [
+      "src_app_page",
+      "src_app_page_embodiedflysandbox",
+      "src_app_page_herosection",
+      "src_app_page_homepage",
+      "src_app_page_navbar",
+      "src_app_page_neuronorbs",
+      "src_app_page_stonkflysimulator",
+      "src_app_page_tabid",
+      "src_app_page_tabs",
+      "src_components_embodiedflysandbox",
+      "src_components_embodiedflysandbox_embodiedflysandbox",
+      "src_components_embodiedflysandbox_stimulusitem",
+      "src_components_navbar",
+      "src_components_navbar_navbar",
+      "src_components_navbar_navbarprops",
+      "src_components_navbar_tab",
+      "src_components_navbar_tabid",
+      "src_components_stonkflysimulator",
+      "src_components_stonkflysimulator_candle",
+      "src_components_stonkflysimulator_stonkflysimulator",
+      "src_components_stonkflysimulator_stonkflysimulatorprops",
+      "src_components_stonkflysimulator_tradelog"
+    ],
+    "1": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_esnext",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target"
+    ],
+    "2": [
+      "eslint",
+      "eslint_config_next",
+      "package_devdependencies",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tailwindcss_postcss",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "tailwindcss",
+      "tailwindcss_postcss",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "typescript"
+    ],
+    "3": [
+      "canvas_confetti",
+      "lucide_react",
+      "next",
+      "package_dependencies",
+      "package_dependencies_canvas_confetti",
+      "package_dependencies_lucide_react",
+      "package_dependencies_next",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_types_canvas_confetti",
+      "react",
+      "react_dom",
+      "types_canvas_confetti"
+    ],
+    "4": [
+      "src_app_page_connectomeexplorer",
+      "src_app_page_eli5knowledgelab",
+      "src_components_connectomeexplorer",
+      "src_components_connectomeexplorer_connectomeexplorer",
+      "src_components_eli5knowledgelab",
+      "src_components_eli5knowledgelab_eli5knowledgelab",
+      "src_components_eli5knowledgelab_eli5knowledgelabprops",
+      "src_data_connectomedata",
+      "src_data_connectomedata_community_ideas",
+      "src_data_connectomedata_communityidea",
+      "src_data_connectomedata_drosophila_neuropils",
+      "src_data_connectomedata_neuropilregion"
+    ],
+    "5": [
+      "ref_mts",
+      "ref_next_dev_types_ts",
+      "ref_next_env_d_ts",
+      "ref_next_types_ts",
+      "ref_node_modules",
+      "ref_ts",
+      "ref_tsx",
+      "tsconfig",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "6": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_start",
+      "package_version"
+    ],
+    "7": [
+      "src_app_page_reelmediavault",
+      "src_components_reelmediavault",
+      "src_components_reelmediavault_reelmediavault",
+      "src_data_transcriptdata",
+      "src_data_transcriptdata_reel2_transcripts",
+      "src_data_transcriptdata_reel_transcripts",
+      "src_data_transcriptdata_transcriptsegment"
+    ],
+    "8": [
+      "vercel",
+      "vercel_buildcommand",
+      "vercel_devcommand",
+      "vercel_framework",
+      "vercel_installcommand",
+      "vercel_outputdirectory"
+    ],
+    "9": [
+      "manim_connectome_synapse_matrix",
+      "manim_connectome_synapse_matrix_connectomematrixscene",
+      "manim_connectome_synapse_matrix_connectomematrixscene_construct",
+      "manim_connectome_synapse_matrix_py_scene",
+      "manim_connectome_synapse_matrix_rationale_1"
+    ],
+    "10": [
+      "manim_lif_neuron_equation",
+      "manim_lif_neuron_equation_lifequationscene",
+      "manim_lif_neuron_equation_lifequationscene_construct",
+      "manim_lif_neuron_equation_py_scene",
+      "manim_lif_neuron_equation_rationale_1"
+    ],
+    "11": [
+      "src_app_layout",
+      "src_app_layout_geistmono",
+      "src_app_layout_geistsans",
+      "src_app_layout_metadata",
+      "src_app_layout_rootlayout"
+    ],
+    "12": [
+      "eslint_config",
+      "eslint_config_eslintconfig"
+    ],
+    "13": [
+      "next_config",
+      "next_config_nextconfig"
+    ],
+    "14": [
+      "postcss_config",
+      "postcss_config_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.1038961038961039,
+    "1": 0.10526315789473684,
+    "2": 0.11764705882352941,
+    "3": 0.15384615384615385,
+    "4": 0.22727272727272727,
+    "5": 0.2,
+    "6": 0.2222222222222222,
+    "7": 0.42857142857142855,
+    "8": 0.3333333333333333,
+    "9": 0.4,
+    "10": 0.4,
+    "11": 0.4,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "tsconfig_include",
+      "label": "include",
+      "degree": 7
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 5
+    },
+    {
+      "id": "tsconfig_compileroptions_lib",
+      "label": "lib",
+      "degree": 4
+    },
+    {
+      "id": "manim_connectome_synapse_matrix_connectomematrixscene",
+      "label": "ConnectomeMatrixScene",
+      "degree": 3
+    },
+    {
+      "id": "manim_lif_neuron_equation_lifequationscene",
+      "label": "LIFEquationScene",
+      "degree": 3
+    },
+    {
+      "id": "package_dependencies_types_canvas_confetti",
+      "label": "@types/canvas-confetti",
+      "degree": 2
+    },
+    {
+      "id": "package_dependencies_canvas_confetti",
+      "label": "canvas-confetti",
+      "degree": 2
+    },
+    {
+      "id": "package_dependencies_lucide_react",
+      "label": "lucide-react",
+      "degree": 2
+    },
+    {
+      "id": "package_dependencies_next",
+      "label": "next",
+      "degree": 2
+    }
+  ],
+  "surprises": [],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

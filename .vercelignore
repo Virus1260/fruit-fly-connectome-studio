@@ -1,0 +1,42 @@
+# Vercel Deployment Ignore Rules
+# Keeps deployments fast and lightweight.
+# All these files remain tracked in Git and pushed to GitHub.
+
+# Heavy research data and raw video assets
+reference_data/
+*.mp4
+
+# Graphify knowledge graph data and artifacts
+graphify/
+graphify-out/
+.graphify*
+
+# Manim animation scripts, renders, and caches
+manim/
+media/
+__pycache__/
+*.py
+*.pyc
+
+# Local environments and notebooks
+.venv/
+venv/
+*.ipynb
+
+# Project context and planning files (tracked on GitHub, omitted from Vercel bundle)
+.agent/
+.agents/
+prd.md
+PRD.md
+architecture.md
+ARCHITECTURE.md
+rules.md
+RULES.md
+design.md
+DESIGN.md
+tasks.md
+TASKS.md
+memory.md
+MEMORY.md
+AGENTS.md
+CLAUDE.md

@@ -1,0 +1,17 @@
+{
+  "source_url": "https://www.instagram.com/reel/DdeCyNIqBWz/",
+  "shortcode": "DdeCyNIqBWz",
+  "creator": "@yournishaant",
+  "duration_seconds": 96.02,
+  "video_resolution": "720x1280 (9:16 vertical)",
+  "fps": 30.0,
+  "topic": "The 6 Essential Spec-Driven AI Agent Files",
+  "framework_files": [
+    { "filename": "PRD.md", "purpose": "Product requirements, problem solved, feature list" },
+    { "filename": "ARCHITECTURE.md", "purpose": "App flow, directory tree, tech stack, data pipelines" },
+    { "filename": "RULES.md", "purpose": "AI do's & don'ts, forbidden libraries, error conventions" },
+    { "filename": "DESIGN.md", "purpose": "Colors, typography, component rules, design system" },
+    { "filename": "TASKS.md", "purpose": "Decomposed step-by-step milestones for agent execution" },
+    { "filename": "MEMORY.md", "purpose": "Episodic memory, architectural decisions, bug resolution log" }
+  ]
+}

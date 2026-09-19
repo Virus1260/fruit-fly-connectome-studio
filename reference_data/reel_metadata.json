@@ -1,0 +1,44 @@
+{
+  "id": "DdX_J5ovev8",
+  "url": "https://www.instagram.com/reel/DdX_J5ovev8/?stkn=Y3p1NnNmZ24xemd1",
+  "title": "Video by yournishaant",
+  "author": {
+    "name": "Nishant Tiwari",
+    "handle": "@yournishaant",
+    "profile_url": "https://www.instagram.com/yournishaant/"
+  },
+  "upload_date": "2026-09-16",
+  "duration_seconds": 81.57,
+  "fps": 30.0,
+  "resolution": "720x1280 (9:16 vertical video)",
+  "likes": "24,000+",
+  "comments": "233+",
+  "caption": "Neural networks have been using “ artificial neurons “ for a long time now, since the late 50s or so.\nA fruit fly brain is 166K neurons and many connections between them.\nThe artificial fruit fly brain is essentially a 166000 node neural network with inputs coming from neurons that would get signals from the fly’s eyes and such, and outputs that would go to the fly’s muscles.\nSo it’s essentially an AI whose brain is modelled exactly like the layout of the fruit fly brain.\n.\n.\n#follow #technology #tech #aiml #google",
+  "hashtags": ["#follow", "#technology", "#tech", "#aiml", "#google"],
+  "keywords": [
+    "google",
+    "artificial neurons",
+    "fruit fly brain",
+    "ai research",
+    "machine learning",
+    "robotics",
+    "neural networks",
+    "sensorimotor pathways",
+    "deep learning",
+    "artificial intelligence",
+    "google deepmind",
+    "drosophila central nervous system",
+    "ultra-deep learning",
+    "floodfilling network",
+    "stonkfly",
+    "bitcoin trading",
+    "minecraft simulation"
+  ],
+  "associated_research": {
+    "primary_paper": "A connectome of the adult Drosophila melanogaster central nervous system (Cell, September 2026)",
+    "institutions": ["HHMI Janelia Research Campus", "Google Research", "Cambridge Connectomics Group", "Princeton University"],
+    "dataset": "MaleCNS v1.0 / FlyWire connectome",
+    "neurons_count": 166691,
+    "synaptic_connections": 125000000
+  }
+}
